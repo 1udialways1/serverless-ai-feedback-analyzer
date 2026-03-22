@@ -17,7 +17,7 @@ import {
   YAxis,
 } from "recharts";
 
-// ✅ AWS LAMBDA API
+// ✅ YOUR AWS API (KEEP THIS EXACT)
 const AI_API =
   "https://kyqi5xmyg1.execute-api.ap-south-1.amazonaws.com/feedback";
 
@@ -49,14 +49,24 @@ function App() {
     setUser(null);
   };
 
-  // 🤖 ANALYZE (ONLY AWS)
+  // 🤖 ANALYZE (FINAL FIXED)
   const analyzeFeedback = async () => {
     if (!feedback.trim()) return;
 
     setLoading(true);
 
     try {
-      const res = await axios.post(AI_API, { feedback });
+      const res = await axios.post(
+        AI_API,
+        JSON.stringify({ feedback }), // ✅ FIXED
+        {
+          headers: {
+            "Content-Type": "application/json", // ✅ FIXED
+          },
+        }
+      );
+
+      console.log("API RESPONSE:", res.data);
 
       const aiReply = res.data.reply || "No reply";
       const aiSentiment = res.data.sentiment || "Neutral";
@@ -64,19 +74,16 @@ function App() {
       setReply(aiReply);
       setSentiment(aiSentiment);
 
-      // ✅ Only local history (no backend)
       setHistory((prev) => [
-        {
-          message: feedback,
-          reply: aiReply,
-          sentiment: aiSentiment,
-        },
+        { sentiment: aiSentiment },
         ...prev,
       ]);
 
       setFeedback("");
-    } catch (err) {
-      console.error(err);
+    } catch (err: any) {
+      console.error("FULL ERROR:", err);
+      console.log("ERROR DATA:", err.response?.data);
+
       setReply("❌ Failed to analyze");
       setSentiment("Neutral");
     }
@@ -147,7 +154,7 @@ function App() {
         </button>
       </div>
 
-      {/* MAIN CARD */}
+      {/* MAIN */}
       <div
         style={{
           marginTop: "40px",
@@ -212,7 +219,7 @@ function App() {
           </h3>
         </div>
 
-        {/* 📊 CHART */}
+        {/* CHART */}
         <h3 style={{ marginTop: "30px" }}>📊 Analytics</h3>
 
         <BarChart width={500} height={300} data={chartData}>
