@@ -17,8 +17,9 @@ import {
   YAxis,
 } from "recharts";
 
-// ✅ NETLIFY FUNCTION URL
-const API_URL = "/.netlify/functions/analyze";
+// ✅ AWS LAMBDA API
+const AI_API =
+  "https://kyqi5xmyg1.execute-api.ap-south-1.amazonaws.com/feedback";
 
 function App() {
   const [user, setUser] = useState<User | null>(null);
@@ -48,14 +49,14 @@ function App() {
     setUser(null);
   };
 
-  // 🤖 ANALYZE (SERVERLESS)
+  // 🤖 ANALYZE (ONLY AWS)
   const analyzeFeedback = async () => {
     if (!feedback.trim()) return;
 
     setLoading(true);
 
     try {
-      const res = await axios.post(API_URL, { feedback });
+      const res = await axios.post(AI_API, { feedback });
 
       const aiReply = res.data.reply || "No reply";
       const aiSentiment = res.data.sentiment || "Neutral";
@@ -63,9 +64,11 @@ function App() {
       setReply(aiReply);
       setSentiment(aiSentiment);
 
-      // Update chart data
+      // ✅ Only local history (no backend)
       setHistory((prev) => [
         {
+          message: feedback,
+          reply: aiReply,
           sentiment: aiSentiment,
         },
         ...prev,
