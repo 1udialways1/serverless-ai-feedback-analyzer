@@ -1,73 +1,140 @@
-# React + TypeScript + Vite
+# 🚀 Serverless AI Feedback Analyzer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An AI-powered feedback analysis system built using **AWS Lambda (Serverless Architecture)** and **MongoDB Atlas**.
+This application processes user feedback, performs sentiment analysis, and stores results for scalable insights.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+* 🤖 AI-based sentiment analysis (Positive / Negative / Neutral)
+* ☁️ Serverless backend using AWS Lambda
+* 🌐 API handling via AWS API Gateway
+* 🗄️ MongoDB Atlas for data storage
+* ⚡ Fast, scalable, and cost-efficient architecture
+* 🔐 Secure API key & environment variable management
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🏗️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* **Backend:** Node.js (AWS Lambda)
+* **Cloud:** AWS Lambda + API Gateway
+* **Database:** MongoDB Atlas
+* **AI Integration:** Groq API / LLM
+* **Environment Management:** dotenv
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📁 Project Structure
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+serverless-ai-feedback-analyzer/
+│
+├── functions/              # AWS Lambda functions
+│   ├── analyze.js          # AI sentiment analysis
+│   └── saveFeedback.js     # Store feedback in MongoDB
+│
+├── config/                 # Database connection
+├── models/                 # MongoDB schemas
+├── utils/                  # Helper functions
+├── .env.example            # Environment variables template
+├── package.json
+└── README.md
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ⚙️ Setup & Installation
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1️⃣ Clone the repository
+
 ```
+git clone https://github.com/1udialways1/serverless-ai-feedback-analyzer.git
+cd serverless-ai-feedback-analyzer
+```
+
+### 2️⃣ Install dependencies
+
+```
+npm install
+```
+
+### 3️⃣ Setup environment variables
+
+Create a `.env` file in root:
+
+```
+MONGO_URI=your_mongodb_connection_string
+GROQ_API_KEY=your_api_key
+```
+
+---
+
+## 🚀 Running Locally
+
+You can test functions locally using:
+
+* Serverless Framework
+* AWS SAM CLI
+
+Example:
+
+```
+npm run dev
+```
+
+---
+
+## ☁️ Deployment (AWS Lambda)
+
+1. Create AWS Lambda functions
+2. Connect with API Gateway
+3. Add environment variables in AWS
+4. Deploy functions
+
+---
+
+## 📡 API Endpoints
+
+### 🔹 Analyze Feedback
+
+```
+POST /analyze
+```
+
+### 🔹 Save Feedback
+
+```
+POST /save-feedback
+```
+
+---
+
+## 🔐 Security
+
+* `.env` is ignored using `.gitignore`
+* API keys are not exposed in the repository
+* Environment variables are used in production
+
+---
+
+## 📈 Future Improvements
+
+* 📊 Admin dashboard with analytics
+* 🔐 User authentication system
+* 📧 Email notifications after feedback submission
+* 📉 Sentiment trends visualization
+
+---
+
+## 👨‍💻 Author
+
+**Uddipan Mondal**
+
+---
+
+## ⭐ Support
+
+If you like this project, give it a ⭐ on GitHub!
+
