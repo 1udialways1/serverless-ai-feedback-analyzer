@@ -50,6 +50,8 @@ An intelligent system that analyzes user feedback using AI and provides insights
 
 ## 🌐 Live Demo
 🔗 https://serverless-ai-feedback-analyzer.netlify.app/
+## 🎥 Demo Video
+▶️ [Watch Demo](https://drive.google.com/file/d/1rJVBakcj2wTSTqky69YGM81R_9YGHjvs/view?usp=sharing)
 
 ## ⚙️ Setup & Installation
 
