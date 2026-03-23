@@ -139,6 +139,7 @@ POST /save-feedback
 **Uddipan Mondal**
 
 ---
+## ⚠️ Note: Backend services may be inactive due to cloud cost optimization. Demo available upon request.
 
 ## ⭐ Support
 
