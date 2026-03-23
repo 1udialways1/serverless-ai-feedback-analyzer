@@ -21,7 +21,7 @@ This application processes user feedback, performs sentiment analysis, and store
 * **Backend:** Node.js (AWS Lambda)
 * **Cloud:** AWS Lambda + API Gateway
 * **Database:** MongoDB Atlas
-* **AI Integration:** Groq API / LLM
+* **AI Integration:** Gemini API / LLM
 * **Environment Management:** dotenv
 
 ---
