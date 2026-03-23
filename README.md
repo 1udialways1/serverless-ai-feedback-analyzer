@@ -74,7 +74,7 @@ Create a `.env` file in root:
 
 ```
 MONGO_URI=your_mongodb_connection_string
-GROQ_API_KEY=your_api_key
+Google AI APIs (Gemini)_API_KEY=your_api_key
 ```
 
 ---
