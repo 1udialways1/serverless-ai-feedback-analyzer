@@ -44,7 +44,25 @@ serverless-ai-feedback-analyzer/
 ```
 
 ---
+# 🚀 AI Feedback Analyzer
 
+An intelligent system that analyzes user feedback using AI and provides insights like sentiment, accuracy, and analytics dashboard.
+
+## 🌐 Live Demo
+🔗 https://serverless-ai-feedback-analyzer.netlify.app/
+
+## ✨ Features
+- User Authentication (Login/Signup)
+- Payment Integration (QR / Bank)
+- AI-generated responses
+- Sentiment Analysis Dashboard (Admin)
+- Email Notifications
+
+## 🛠️ Tech Stack
+- Frontend: React + Vite
+- Backend: Node.js / Serverless
+- Database: MongoDB
+- Hosting: Netlify
 ## ⚙️ Setup & Installation
 
 ### 1️⃣ Clone the repository
